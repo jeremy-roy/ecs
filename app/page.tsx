@@ -61,7 +61,7 @@ export default function Home() {
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to Start Your Project?</h2>
               <p className="text-lg text-gray-300">
-                Contact us today for a free consultation and quote. Let's discuss how we can bring your ideas to life.
+                Contact us today. Let's discuss how we can bring your ideas to life.
               </p>
             </div>
             <ContactForm />
