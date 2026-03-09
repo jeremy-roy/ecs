@@ -30,7 +30,7 @@ export default function Home() {
                 </div>
                 <div className="grid grid-cols-2 gap-6 pt-4">
                   <div className="p-4 bg-gray-50 rounded-lg">
-                    <h4 className="text-3xl font-bold text-primary mb-1">15+</h4>
+                    <h4 className="text-3xl font-bold text-primary mb-1">10+</h4>
                     <p className="text-sm text-gray-500 font-medium">Years Experience</p>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg">
