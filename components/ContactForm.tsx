@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Send } from 'lucide-react';
+import { sendContactEmail } from '@/app/actions';
 
 export function ContactForm() {
     const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -14,10 +15,17 @@ export function ContactForm() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        const formData = new FormData(e.currentTarget);
+        const result = await sendContactEmail(formData);
+
         setIsSubmitting(false);
-        setIsSubmitted(true);
+
+        if (result?.success) {
+            setIsSubmitted(true);
+        } else {
+            alert('Failed to send message. Please try again.');
+        }
     };
 
     if (isSubmitted) {
@@ -56,13 +64,13 @@ export function ContactForm() {
                             <label htmlFor="name" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                                 Name
                             </label>
-                            <Input id="name" placeholder="John Doe" required />
+                            <Input id="name" name="name" placeholder="John Doe" required />
                         </div>
                         <div className="space-y-2">
                             <label htmlFor="email" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                                 Email
                             </label>
-                            <Input id="email" type="email" placeholder="john@example.com" required />
+                            <Input id="email" name="email" type="email" placeholder="john@example.com" required />
                         </div>
                     </div>
 
@@ -70,14 +78,14 @@ export function ContactForm() {
                         <label htmlFor="phone" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                             Phone (Optional)
                         </label>
-                        <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
+                        <Input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" />
                     </div>
 
                     <div className="space-y-2">
                         <label htmlFor="service" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                             Service Interested In
                         </label>
-                        <Input id="service" placeholder="e.g. Kitchen Renovation" />
+                        <Input id="service" name="service" placeholder="e.g. Kitchen Renovation" />
                     </div>
 
                     <div className="space-y-2">
@@ -86,6 +94,7 @@ export function ContactForm() {
                         </label>
                         <Textarea
                             id="message"
+                            name="message"
                             placeholder="Tell us about your project..."
                             className="min-h-[120px]"
                             required

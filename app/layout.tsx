@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Eden Construction Services | Quality Construction & Renovation",
   description: "Professional construction services including groundworks, steelwork, renovations, and more. Contact us for a quote today.",
+  icons: {
+    icon: "/branding/favicon.jpg",
+  },
 };
 
 export default function RootLayout({

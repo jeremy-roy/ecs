@@ -27,7 +27,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-2">
           <div className="relative h-10 w-32 md:h-12 md:w-40">
             <Image
-              src="/branding/EC-logo-grey.png"
+              src="/branding/ECSfavicon_1.jpg"
               alt="Eden Construction Services"
               fill
               className="object-contain object-left"
